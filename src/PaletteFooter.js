@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import {withStyles} from '@material-ui/styles';
+import styles from './styles/PaletteFooterStyles';
+
 
 function PaletteFooter(props){
-    const {paletteName, emoji} = props;//ei ole this. props kuna functional component, class-ga oleks this.props
+    const {paletteName, emoji,classes} = props;//ei ole this. props kuna functional component, class-ga oleks this.props
 return(
-    <footer className="Palette-footer">
+    <footer className={classes.PaletteFooter}>
                     {paletteName}
-                    <span className='emoji'>
+                    <span className={classes.emoji}>
                     {emoji} 
                     {/* lipu emojid ei tööta windowsis */}
                     </span>
@@ -13,4 +15,4 @@ return(
 )
 }
 
-export default PaletteFooter;
+export default withStyles(styles)(PaletteFooter);
