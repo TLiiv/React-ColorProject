@@ -7,10 +7,6 @@ import styles from './styles/PaletteListStyles';
 
 
 class PaletteList extends Component {
-    // constructor(props){
-    //     super(props);
-    //     this.goToPalette = this.goToPalette.bind(this);
-    // }
     goToPalette(id) {
         this.props.history.push(`/palette/${id}`)
     }
@@ -21,6 +17,7 @@ class PaletteList extends Component {
                 <div className={classes.container}>
                     <nav className={classes.nav}>
                         <h1>React Colors</h1>
+                        <Link to="./palette/new">+ Create Palette</Link>
                     </nav>
                     <div className={classes.palettes}>
                         {palettes.map(palette => (
