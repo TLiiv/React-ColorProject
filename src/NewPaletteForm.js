@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DraggableColorBox from './DraggableColorBox';
 
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -59,6 +60,7 @@ const styles = theme => ({
     },
     content: {
       flexGrow: 1,
+      height:"calc(100vh - 64px)",
       padding: theme.spacing.unit * 3,
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
@@ -75,7 +77,7 @@ const styles = theme => ({
     },
   });
 
-  class NewPaletteForm extends React.Component {
+  class NewPaletteForm extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -172,9 +174,11 @@ const styles = theme => ({
             })}
           >
             <div className={classes.drawerHeader} />
-           <ul>
-            {this.state.colors.map(color => (<li style={{backgroundColor:color}}>{color}</li>))}
-           </ul>
+           
+            {this.state.colors.map(color => (
+                <DraggableColorBox color={color}/>
+            ))}
+           
           </main>
         </div>
       );
