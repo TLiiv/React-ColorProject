@@ -197,7 +197,6 @@ const styles = theme => ({
                 Save Palette
                 </Button>
                 </ValidatorForm>
-            <Button variant="contained" color="secondary">Random Color</Button>
             </Toolbar>
           </AppBar>
           <Drawer
