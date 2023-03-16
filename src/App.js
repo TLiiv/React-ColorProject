@@ -31,7 +31,10 @@ class App extends Component {
       <Switch>
         <Route 
         exact path='/palette/new'
-        render={(routeProps)=> <NewPaletteForm savePalette={this.savePalette} {...routeProps}/>}
+        render={(routeProps)=> 
+        <NewPaletteForm 
+        savePalette={this.savePalette} 
+        palettes={this.state.palettes} {...routeProps}/>}
         // needs to be top or palette/:id matches and runds into error
         />
         <Route 
