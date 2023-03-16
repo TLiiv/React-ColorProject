@@ -86,10 +86,12 @@ const styles = theme => ({
             currentColor:'',
             newName:'',
             colors:[{color:'blue', name:'blue'}]
+            
           };
           this.updateCurrentColor = this.updateCurrentColor.bind(this);
           this.addNewColor = this.addNewColor.bind(this);
-          this.handleChange = this.handleChange.bind(this)
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     componentDidMount(){
@@ -127,6 +129,17 @@ const styles = theme => ({
     handleChange(evt){
       this.setState({newName: evt.target.value})
     }
+
+    handleSubmit(){
+      let newName="Test"
+      const newPalette = {
+        paletteName:newName, 
+        colors: this.state.colors, 
+        id: newName.toLowerCase().replace(/ /g,"-")}
+      this.props.savePalette(newPalette);
+      //savePalette in App.js
+      this.props.history.push('/'); //redirect after save
+    }
   
     render() {
       const { classes } = this.props;
@@ -136,6 +149,7 @@ const styles = theme => ({
         <div className={classes.root}>
           <CssBaseline />
           <AppBar
+            color="default"
             position="fixed"
             className={classNames(classes.appBar, {
               [classes.appBarShift]: open,
@@ -153,6 +167,13 @@ const styles = theme => ({
               <Typography variant="h6" color="inherit" noWrap>
                 Persistent drawer
               </Typography>
+              <Button 
+              variant="contained" 
+              color="primary" 
+              onClick={this.handleSubmit}
+              >
+                Save Palette</Button>
+            <Button variant="contained" color="secondary">Random Color</Button>
             </Toolbar>
           </AppBar>
           <Drawer
