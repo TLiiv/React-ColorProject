@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
+import { arrayMove } from 'react-sortable-hoc';
 
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -93,6 +94,7 @@ const styles = theme => ({
           this.addNewColor = this.addNewColor.bind(this);
           this.handleChange = this.handleChange.bind(this);
           this.handleSubmit = this.handleSubmit.bind(this);
+          this.removeColor = this.removeColor.bind(this);
     }
     
     componentDidMount(){
@@ -158,7 +160,11 @@ const styles = theme => ({
       //savePalette in App.js
       this.props.history.push('/'); //redirect after save
     }
-
+    onSortEnd = ({oldIndex, newIndex}) => {
+      this.setState(({colors}) => ({
+        colors: arrayMove(colors, oldIndex, newIndex),
+      }));
+    };
   
     render() {
       const { classes } = this.props;
@@ -256,13 +262,13 @@ const styles = theme => ({
           >
             <div className={classes.drawerHeader} />
            
-            {this.state.colors.map(color => (
-                <DraggableColorBox 
-                key={color.name}
-                color={color.color} 
-                name={color.name} 
-                handleClick={()=>this.removeColor(color.name)}/>
-            ))}
+            <DraggableColorList 
+            colors={this.state.colors} 
+            removeColor={this.removeColor}
+            axis='xy'
+            onSortEnd = {this.onSortEnd}
+            pressDelay={100}
+            />
            
           </main>
         </div>
