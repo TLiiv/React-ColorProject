@@ -24,16 +24,6 @@ class NewPaletteFormNav extends Component{
        this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
-        // ValidatorForm.addValidationRule('isColorNameUnique', value =>
-        //   this.state.colors.every(
-        //     ({ name }) => name.toLowerCase() !== value.toLowerCase()
-        //   )
-        // );
-        // ValidatorForm.addValidationRule('isColorUnique', value =>
-        //   this.state.colors.every(
-        //     ({ color }) => color !== this.state.currentColor
-        //   )
-        // );
         ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
           this.props.palettes.every(
             ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
