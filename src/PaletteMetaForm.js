@@ -6,87 +6,91 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import {Picker} from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
 
 
 
 class PaletteMetaForm extends Component {
-  
-    constructor(props){
-        super(props);
-        this.state = {
-            open: true,
-            newPaletteName: ""
-          };
-          this.handleChange = this.handleChange.bind(this);
-    }
-    handleChange(evt) {
-        this.setState({
-          [evt.target.name]: evt.target.value
-        })
-      }
-      componentDidMount() {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
-          this.props.palettes.every(
-            ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-          )
-        );
-     }
 
-      handleClickOpen = () => {
-        this.setState({ open: true });
-      };
-    
-      handleClose = () => {
-        this.setState({ open: false });
-      };
-    
-      render() {
-        const {newPaletteName}= this.state;
-        
-        return (
-            <Dialog
-              open={this.state.open}
-              onClose={this.handleClose}
-              aria-labelledby="form-dialog-title"
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: true,
+      newPaletteName: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
+  componentDidMount() {
+    ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
+      this.props.palettes.every(
+        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+      )
+    );
+  }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    const { newPaletteName } = this.state;
+    const { hideForm, handleSubmit } = this.props;
+
+    return (
+      <Dialog
+        open={this.state.open}
+        onClose={hideForm}
+        aria-labelledby="form-dialog-title"
+      >
+
+        <DialogTitle id="form-dialog-title">Choose A Palette Name</DialogTitle>
+        <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
+          <DialogContent>
+            <DialogContentText>
+              Please enter a name for your palette. Make sure it's unique!
+            </DialogContentText>
+            <Picker />
+
+           
+            <TextValidator
+              label="Palette Name"
+              value={newPaletteName}
+              onChange={this.handleChange}
+              fullWidth
+              margin='normal'
+              name='newPaletteName'
+              validators={['required', 'isPaletteNameUnique']}
+              errorMessages={['Enter Palette Name', 'Name is already used']}
+            />
+          </DialogContent>
+         
+          <DialogActions>
+            <Button onClick={hideForm} color="primary">
+              Cancel
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
             >
-        
-              <DialogTitle id="form-dialog-title">Choose A Palette Name</DialogTitle>
-              <ValidatorForm onSubmit={()=>this.props.handleSubmit(newPaletteName)}>
-              <DialogContent>
-                <DialogContentText>
-                  Please enter a name for your palette. Make sure it's unique!
-                </DialogContentText>
-               
-              <TextValidator
-                label="Palette Name"
-                value={newPaletteName}
-                onChange={this.handleChange}
-                fullWidth
-                margin='normal'
-                name='newPaletteName'
-                validators={['required', 'isPaletteNameUnique']}
-                errorMessages={['Enter Palette Name', 'Name is already used']}
-              />
-            
-            
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={this.handleClose} color="primary">
-                  Cancel
-                </Button>
-                <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
-                Save Palette
-              </Button>
-              </DialogActions>
-              </ValidatorForm>
-            </Dialog>
-        );
-      }
-    }
-    
+              Save Palette
+            </Button>
+          </DialogActions>
+        </ValidatorForm>
+      </Dialog>
+    );
+  }
+}
+
 
 export default PaletteMetaForm;
