@@ -1,3 +1,5 @@
+import Sizes from './Sizes';
+
 const drawerWidth = 350;
 
 const styles = theme =>({
@@ -33,11 +35,18 @@ const styles = theme =>({
        marginRight:'1rem',
        '& a':{
         textDecoration:'none'
-       }
+       },
+       [Sizes.down('xs')] : {
+        marginRight:'0.5rem'
+    },
       },
       button:{
         margin:'0 0.5rem',
+        [Sizes.down('xs')] : {
+          margin:'0 0.2rem',
+          padding:'0.2rem'
       }
+    }
 });
 
 export default styles;

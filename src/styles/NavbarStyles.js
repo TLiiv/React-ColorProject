@@ -1,8 +1,13 @@
+import Sizes from './Sizes';
+
 export default {
     slider: {
         width: 340,
         margin: '0 10px',
         display: 'inline-block',
+    },
+    [Sizes.down('md')]:{
+        width:'150px'
     },
     Navbar: {
         display: 'flex',
@@ -22,6 +27,9 @@ export default {
         "& a" : {
             textDecoration: 'none',
             color: 'black'
+        },
+        [Sizes.down('xs')]:{
+            display:'none'
         }
     },
     
