@@ -17,12 +17,12 @@ export default  {
         [Sizes.down('lg')] : {
             width:'25%',
             height: props =>
-            props.showingFullPalette ? '20%' :'10%'
+            props.showingFullPalette ? '20%' :'33.3333%'
         },
         [Sizes.down('md')] : {
             width:'50%',
             height: props =>
-            props.showingFullPalette ? '10%' :'10%'
+            props.showingFullPalette ? '10%' :'20%'
         },
         [Sizes.down('xs')] : {
             width:'100%',
@@ -122,6 +122,9 @@ export default  {
             marginBottom: 0,
             padding: '1rem',
             textTransform: 'uppercase',
+            [Sizes.down("xs")] : {
+                fontSize:'6rem'
+            }
         },
         "& p":{
             fontSize: '2rem',
