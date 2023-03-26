@@ -8,7 +8,7 @@ const styles = {
       marginTop:'.5rem',
       fontSize:'1.5rem'
     },
-    colorNamenput:{
+    colorNameInput:{
       width:'100%',
       height:'70px'
     }

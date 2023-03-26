@@ -60,10 +60,11 @@ class ColorPickerForm extends Component {
         return (
             <div>
         <ChromePicker
-            width='100%'
+            width='280px'
             color={currentColor}
             onChangeComplete={this.updateCurrentColor}
             className={classes.picker}
+            
           />
           <ValidatorForm onSubmit={this.handleSubmit} ref='form'>
             <TextValidator
