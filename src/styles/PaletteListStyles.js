@@ -2,6 +2,15 @@ import Sizes from './Sizes';
 import bg from './bg.svg';
 
 export default {
+"@global":{
+    ".fade-exit":{
+        opacity:1
+    },
+    ".fade-exit-active":{
+        opacity:0,
+        transition:"opacity 0.5s ease-out"
+    }
+},
     root: {
        height:'100',
        display:'flex',
@@ -10,7 +19,7 @@ export default {
     //    background by SVGBackgrounds.com
        backgroundColor:'#1E4767',
        backgroundImage:`url(${bg})`,
-       backgroundSize: 'cover',
+       backgroundSize: 'cover'
     //    overflow:'scroll'
        
     },
