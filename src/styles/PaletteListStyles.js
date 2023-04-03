@@ -1,13 +1,21 @@
 import Sizes from './Sizes';
+import bg from './bg.svg';
 
 export default {
     root: {
-       backgroundColor:'blue',
-       height:'100vh',
+       height:'100',
        display:'flex',
        alignItems:'flex-start',
        justifyContent:'center',
+    //    background by SVGBackgrounds.com
+       backgroundColor:'#1E4767',
+       backgroundImage:`url(${bg})`,
+       backgroundSize: 'cover',
+    //    overflow:'scroll'
        
+    },
+    heading:{
+        fontSize:'2rem'
     },
     container:{
         width:'50%',
