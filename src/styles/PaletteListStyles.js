@@ -1,3 +1,4 @@
+import Sizes from './Sizes';
 
 export default {
     root: {
@@ -14,6 +15,12 @@ export default {
         alignItems:'flex-start',
         flexDirection:'column',
         flexWrap:'wrap',
+        [Sizes.down("xl")] : {
+            width:'70%'
+        },
+        [Sizes.down("xs")] : {
+            width:'60%'
+        }
         
     },
     nav: {
@@ -33,6 +40,13 @@ export default {
         width:'100%',
         display:'grid',
         gridTemplateColumns:'repeat(3,30%)',
-        gridGap:'5%'
+        gridGap:'2rem',
+        [Sizes.down('md')] : {
+            gridTemplateColumns:'repeat(2,50%)'
+        },
+        [Sizes.down('xs')] : {
+            gridTemplateColumns:'repeat(1,100%)',
+            gridGap:'1rem'
+        }
     },
 };
