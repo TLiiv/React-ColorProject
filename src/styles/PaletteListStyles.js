@@ -12,16 +12,16 @@ export default {
     }
 },
     root: {
-       height:'100',
+       height:'100vh',
        display:'flex',
        alignItems:'flex-start',
        justifyContent:'center',
     //    background by SVGBackgrounds.com
        backgroundColor:'#1E4767',
        backgroundImage:`url(${bg})`,
-       backgroundSize: 'cover'
-    //    overflow:'scroll'
-       
+    //    backgroundSize: 'cover'
+       overflowY:'scroll'
+
     },
     heading:{
         fontSize:'2rem'
@@ -33,10 +33,10 @@ export default {
         flexDirection:'column',
         flexWrap:'wrap',
         [Sizes.down("xl")] : {
-            width:'70%'
+            width:'65%'
         },
         [Sizes.down("xs")] : {
-            width:'60%'
+            width:'55%'
         }
         
     },

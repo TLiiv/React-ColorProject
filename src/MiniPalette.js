@@ -14,7 +14,7 @@ class MiniPalette extends Component{
 
     deletePalette(evt){
         evt.stopPropagation(); // stops routing on icon click
-       this.props.handleDelete(this.props.id);
+       this.props.openDialog(this.props.id);
     }
 
    render(){
