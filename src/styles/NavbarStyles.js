@@ -6,8 +6,8 @@ export default {
         margin: '0 10px',
         display: 'inline-block',
     },
-    [Sizes.down('md')]:{
-        width:'150px'
+    [Sizes.down('sm')]:{
+        width:'140px'
     },
     Navbar: {
         display: 'flex',
