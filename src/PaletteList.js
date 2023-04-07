@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import {withStyles} from '@material-ui/styles';
-import MiniPalette from './MiniPalette';
-import { Link } from 'react-router-dom';
-import styles from './styles/PaletteListStyles';
 import { CSSTransition, TransitionGroup,} from 'react-transition-group';
+import { Link } from 'react-router-dom';
+
+import styles from './styles/PaletteListStyles';
+import MiniPalette from './MiniPalette';
+
+
+import {withStyles} from '@material-ui/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Avatar from '@material-ui/core/Avatar';
@@ -49,8 +52,8 @@ class PaletteList extends Component {
 
     }
     render(){
-        const {palettes, classes, deletePalette} = this.props;
-        const {openDeleteDialog, deletingId} = this.state;
+        const {palettes, classes } = this.props;
+        const {openDeleteDialog } = this.state;
         return(
             <div className={classes.root}>
                 <div className={classes.container}>
